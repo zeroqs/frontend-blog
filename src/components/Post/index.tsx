@@ -19,10 +19,10 @@ export const Post = ({
   viewsCount,
   commentsCount,
   tags,
-  children,
-  isFullPost,
-  isLoading,
-  isEditable,
+  children = [],
+  isFullPost = false,
+  isLoading = false,
+  isEditable ,
 }) => {
   if (isLoading) {
     return <PostSkeleton />;
