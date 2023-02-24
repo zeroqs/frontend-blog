@@ -12,7 +12,7 @@ function App() {
       <Container maxWidth="lg">
         <Routes>
           <Route path="/" element={<Home />}/>
-          {/*<FullPost />*/}
+          <Route path="/posts/:id" element={<FullPost />}/>
           {/*<AddPost />*/}
           {/*<Login />*/}
           {/*<Registration />*/}

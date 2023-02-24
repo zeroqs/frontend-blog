@@ -4,8 +4,6 @@ import App from "./App";
 import CssBaseline from "@mui/material/CssBaseline";
 
 import "./index.scss";
-import {ThemeProvider} from "@mui/material";
-import {theme} from "./theme";
 import {QueryClient, QueryClientProvider} from "react-query";
 import {ReactQueryDevtools} from "react-query/devtools";
 import {BrowserRouter} from "react-router-dom";

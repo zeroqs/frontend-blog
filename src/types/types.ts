@@ -3,7 +3,7 @@ interface Utils {
     updatedAt : string,
     __v : number
 }
-export interface Post extends Utils{
+export interface PostsI extends Utils{
     _id : string,
     title : string,
     text : string,
@@ -18,6 +18,12 @@ export interface User extends Utils{
     fullName : string,
     email : string,
     password : string,
-
 }
-
+export interface PostI extends Utils {
+    _id : string,
+    title : string,
+    tags : [],
+    viewsCount : number,
+    user : string,
+    text : string,
+}

@@ -9,6 +9,8 @@ import CommentIcon from '@mui/icons-material/ChatBubbleOutlineOutlined';
 import styles from './Post.module.scss';
 import { UserInfo } from '../UserInfo';
 import { PostSkeleton } from './Skeleton';
+import {useQuery} from "react-query";
+import {fetchPosts} from "../../services/posts";
 
 export const Post = ({
   _id,
@@ -29,6 +31,7 @@ export const Post = ({
   }
 
   const onClickRemove = () => {};
+
 
   return (
     <div className={clsx(styles.root, { [styles.rootFull]: isFullPost })}>

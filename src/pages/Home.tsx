@@ -12,13 +12,11 @@ import {fetchPosts} from "../services/posts";
 export const Home = () => {
 
     const {data, isLoading, isError} = useQuery({
-        queryFn: () => fetchPosts('posts'),
+        queryFn: () => fetchPosts(),
         queryKey: ['posts']
     })
-    if (isLoading) return 'Loading...'
 
     if (isError) return 'Error'
-
     return (
         <>
             <Tabs style={{marginBottom: 15}} value={0} aria-label="basic tabs example">
@@ -27,7 +25,7 @@ export const Home = () => {
             </Tabs>
             <Grid container spacing={4}>
                 <Grid xs={8} item>
-                    {!isLoading && data && data.map((item) => (
+                    {data && data.map((item) => (
                         <Post
                             _id={item._id}
                             key={item._id}
@@ -39,9 +37,11 @@ export const Home = () => {
                                 fullName: 'Keff',
                             }}
                             viewsCount={item.viewsCount}
-                            commentsCount={3}
-                            tags={['react', 'fun', 'typescript']}
-                            isEditable                     />
+                            commentsCount={item.viewsCount}
+                            tags={item.tags}
+                            isEditable
+                            isLoading={isLoading}
+                        />
                         ))}
                 </Grid>
                 <Grid xs={4} item>
