@@ -1,7 +1,7 @@
 interface Utils {
-    createdAt : string,
-    updatedAt : string,
-    __v : number
+    createdAt? : string,
+    updatedAt? : string,
+    __v? : number
 }
 export interface PostsI extends Utils{
     _id : string,
@@ -18,12 +18,19 @@ export interface User extends Utils{
     fullName : string,
     email : string,
     password : string,
+    avatarUrl : string,
 }
 export interface PostI extends Utils {
     _id : string,
     title : string,
-    tags : [],
+    imageUrl : string,
     viewsCount : number,
-    user : string,
-    text : string,
+    user : User,
+    text? : string,
+    commentsCount : number,
+    children? : [],
+    tags : [],
+    isFullPost? : boolean,
+    isLoading : boolean,
+    isEditable : boolean,
 }

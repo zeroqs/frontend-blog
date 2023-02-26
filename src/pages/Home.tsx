@@ -4,10 +4,11 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Grid from '@mui/material/Grid';
 
-import {Post,TagsBlock,CommentsBlock} from '../components';
+import {TagsBlock,CommentsBlock} from '../components';
 import {useQuery} from "react-query";
 
 import {fetchPosts} from "../services/posts";
+import Post from "../components/Post";
 
 export const Home = () => {
 
@@ -15,7 +16,6 @@ export const Home = () => {
         queryFn: () => fetchPosts(),
         queryKey: ['posts']
     })
-
     if (isError) return 'Error'
     return (
         <>
@@ -31,42 +31,18 @@ export const Home = () => {
                             key={item._id}
                             title={item.title}
                             createdAt={'12 июня 2022 г.'}
-                            imageUrl={item.imageURL}
-                            user={{
-                                avatarUrl: 'https://res.cloudinary.com/practicaldev/image/fetch/s--uigxYVRB--/c_fill,f_auto,fl_progressive,h_50,q_auto,w_50/https://dev-to-uploads.s3.amazonaws.com/uploads/user/profile_image/187971/a5359a24-b652-46be-8898-2c5df32aa6e0.png',
-                                fullName: 'Keff',
-                            }}
+                            imageUrl={item.imageURL ? item.imageURL : ''}
+                            user={item.user}
+                            tags={item.tags}
                             viewsCount={item.viewsCount}
                             commentsCount={item.viewsCount}
-                            tags={item.tags}
                             isEditable
                             isLoading={isLoading}
                         />
-                        ))}
+                    ))
+                    }
                 </Grid>
-                <Grid xs={4} item>
-                    <TagsBlock items={['react', 'typescript', 'заметки']} isLoading={false}/>
-                    <CommentsBlock
-                        items={[
-                            {
-                                user: {
-                                    id: 'wrtij',
-                                    fullName: 'Вася Пупкин',
-                                    avatarUrl: 'https://mui.com/static/images/avatar/1.jpg',
-                                },
-                                text: 'Это тестовый комментарий',
-                            },
-                            {
-                                user: {
-                                    id: 'fhdfhjghjk',
-                                    fullName: 'Иван Иванов',
-                                    avatarUrl: 'https://mui.com/static/images/avatar/2.jpg',
-                                },
-                                text: 'When displaying three lines or more, the avatar is not aligned at the top. You should set the prop to align the avatar at the top',
-                            },
-                        ]}
-                        />
-                </Grid>
+
             </Grid>
         </>
     );
