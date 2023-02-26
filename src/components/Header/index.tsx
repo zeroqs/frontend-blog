@@ -29,12 +29,12 @@ export const Header = () => {
               </>
             ) : (
               <>
-                <a href="/login">
+                <Link to="/login">
                   <Button variant="outlined">Войти</Button>
-                </a>
-                <a href="/register">
+                </Link>
+                <Link to="/register">
                   <Button variant="contained">Создать аккаунт</Button>
-                </a>
+                </Link>
               </>
             )}
           </div>

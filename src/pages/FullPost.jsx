@@ -1,10 +1,8 @@
 import React from "react";
 
-import { Index } from "../components";
-import { CommentsBlock } from "../components";
-import {useLocation, useParams} from "react-router-dom";
+import {useParams} from "react-router-dom";
 import {useQuery} from "react-query";
-import {fetchByPost, fetchPosts} from "../services/posts";
+import {fetchByPost} from "../services/posts";
 import Post from "../components/Post";
 
 export const FullPost = () => {

@@ -34,3 +34,9 @@ export interface PostI extends Utils {
     isLoading : boolean,
     isEditable : boolean,
 }
+
+export interface FormValues  {
+    email: string;
+    password: string;
+}
+
