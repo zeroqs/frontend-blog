@@ -41,3 +41,9 @@ export interface FormValues  {
     password: string;
 }
 
+export interface FormRegistrationValues {
+    fullName : string,
+    email : string,
+    password : string,
+}
+

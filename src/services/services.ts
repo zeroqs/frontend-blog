@@ -1,4 +1,4 @@
-import {FormValues, PostI, PostsI, User} from "../types/types";
+import {FormRegistrationValues, FormValues, PostI, PostsI, User} from "../types/types";
 import axios from "axios";
 
 
@@ -27,5 +27,10 @@ export const userData = async (params: FormValues): Promise<User> => {
 
 export const authMe = async (): Promise<User> => {
     const res = await instance.get('/user')
+    return res.data
+}
+
+export const signUpMe = async (params : FormRegistrationValues): Promise<User> => {
+    const res = await instance.post('/sign-up',params)
     return res.data
 }

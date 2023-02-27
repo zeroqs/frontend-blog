@@ -8,6 +8,7 @@ import React, {useEffect, useState} from "react";
 import {useQuery} from "react-query";
 import {authMe} from "./services/services";
 import {User} from "./types/types";
+import {Simulate} from "react-dom/test-utils";
 
 function App() {
     const [isAuth, setIsAuth] = useState(!!window.localStorage.getItem('token'));
@@ -16,6 +17,9 @@ function App() {
         queryKey: ['auth'],
         onSuccess: (data: User) => {
             console.log(data)
+        },
+        onError: (error) => {
+            console.log('test')
         },
         retry: false
     })
@@ -28,7 +32,7 @@ function App() {
                     <Route path="/posts/:id" element={<FullPost/>}/>
                     {/*<AddPost />*/}
                     <Route path="/login" element={<Login setState={setIsAuth}/>}/>
-                    <Route path="/register" element={<Registration/>}/>
+                    <Route path="/register" element={<Registration setState={setIsAuth}/>}/>
                     <Route path="*" element={<NotFound/>}/>
                 </Routes>
             </Container>
