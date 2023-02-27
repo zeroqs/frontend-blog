@@ -19,6 +19,7 @@ export interface User extends Utils{
     email : string,
     password : string,
     avatarUrl : string,
+    token : string
 }
 export interface PostI extends Utils {
     _id : string,

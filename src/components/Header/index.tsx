@@ -1,14 +1,23 @@
-import React from 'react';
+import React, {FC} from 'react';
 import Button from '@mui/material/Button';
 
 import styles from './Header.module.scss';
 import Container from '@mui/material/Container';
 import {Link} from "react-router-dom";
 
-export const Header = () => {
-  const isAuth = false;
 
-  const onClickLogout = () => {};
+interface HeaderProps {
+  isAuth : boolean,
+  setIsAuth : (arg:boolean) => void
+}
+
+
+export const Header:FC<HeaderProps> = ({isAuth,setIsAuth}) => {
+
+  const onClickLogout = () => {
+    setIsAuth(false)
+    window.localStorage.removeItem('token')
+  };
 
   return (
     <div className={styles.root}>

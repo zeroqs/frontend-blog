@@ -2,7 +2,7 @@ import React from "react";
 
 import {useParams} from "react-router-dom";
 import {useQuery} from "react-query";
-import {fetchByPost} from "../services/posts";
+import {fetchByPost} from "../services/services";
 import Post from "../components/Post";
 
 export const FullPost = () => {

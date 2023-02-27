@@ -4,10 +4,9 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Grid from '@mui/material/Grid';
 
-import {TagsBlock, CommentsBlock} from '../components';
 import {useQuery} from "react-query";
 
-import {fetchPosts} from "../services/posts";
+import {fetchPosts} from "../services/services";
 import Post from "../components/Post";
 
 export const Home = () => {
@@ -17,7 +16,6 @@ export const Home = () => {
         queryKey: ['posts']
     })
     if (isError) return 'Error'
-    if (isLoading) return
     return (
         <>
             <Tabs style={{marginBottom: 15}} value={0} aria-label="basic tabs example">
