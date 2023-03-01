@@ -1,4 +1,4 @@
-import React from "react";
+import React, {FC, ReactElement} from "react";
 
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
@@ -9,11 +9,11 @@ import {useQuery} from "react-query";
 import {fetchPosts} from "../services/services";
 import Post from "../components/Post";
 
-export const Home = () => {
 
+export const Home = ({user}) => {
     const {data, isLoading, isError} = useQuery({
         queryFn: () => fetchPosts(),
-        queryKey: ['posts']
+        queryKey: ['posts'],
     })
     if (isError) return 'Error'
     return (
@@ -35,7 +35,7 @@ export const Home = () => {
                             tags={item.tags}
                             viewsCount={item.viewsCount}
                             commentsCount={item.viewsCount}
-                            isEditable
+                            isEditable = {user._id === item.user._id}
                             isLoading={isLoading}
                         />
                     ))

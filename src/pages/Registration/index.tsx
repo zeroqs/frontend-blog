@@ -13,7 +13,7 @@ import {useMutation} from "react-query";
 import {signUpMe, userData} from "../../services/services";
 import {useNavigate} from "react-router";
 
-export const Registration = ({setState}) => {
+export const Registration = ({setState,setUser}) => {
     const navigate = useNavigate()
 
     const {register, handleSubmit, formState: {errors}} = useForm<FormRegistrationValues>({
@@ -46,6 +46,7 @@ export const Registration = ({setState}) => {
         if ('token' in res) {
             window.localStorage.setItem('token', res.token)
             setState(true)
+            setUser(res)
         }
     }
     return (

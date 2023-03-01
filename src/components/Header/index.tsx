@@ -4,19 +4,23 @@ import Button from '@mui/material/Button';
 import styles from './Header.module.scss';
 import Container from '@mui/material/Container';
 import {Link} from "react-router-dom";
+import {initialUser} from "../../App";
+import {User} from "../../types/types";
 
 
 interface HeaderProps {
   isAuth : boolean,
   setIsAuth : (arg:boolean) => void
+  setUser : (arg:User) => void
 }
 
 
-export const Header:FC<HeaderProps> = ({isAuth,setIsAuth}) => {
+export const Header:FC<HeaderProps> = ({isAuth,setIsAuth,setUser}) => {
 
   const onClickLogout = () => {
     setIsAuth(false)
     window.localStorage.removeItem('token')
+    setUser(initialUser)
   };
 
   return (
@@ -29,9 +33,9 @@ export const Header:FC<HeaderProps> = ({isAuth,setIsAuth}) => {
           <div className={styles.buttons}>
             {isAuth ? (
               <>
-                <a href="/posts/create">
+                <Link to="/posts/create">
                   <Button variant="contained">Написать статью</Button>
-                </a>
+                </Link>
                 <Button onClick={onClickLogout} variant="contained" color="error">
                   Выйти
                 </Button>

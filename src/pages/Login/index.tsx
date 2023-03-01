@@ -12,7 +12,7 @@ import {userData} from "../../services/services";
 import {Navigate, useNavigate} from "react-router";
 
 
-export const Login = ({setState}) => {
+export const Login = ({setState,setUser}) => {
     const navigate = useNavigate()
     const isAuth = (data : User | TypeError) => {
         if ("_id" in data) {
@@ -44,6 +44,7 @@ export const Login = ({setState}) => {
         if ('token' in res) {
             window.localStorage.setItem('token', res.token)
             setState(true)
+            setUser(res)
         }
     };
     return (
